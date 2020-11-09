@@ -18,6 +18,8 @@ Below are links to navigate to my project repository and deployed website link.
 ## Wireframes
 Below is a wireframe for the Apps pages
 
+![Home screen](https://imgur.com/a/nAgIZpY)
+
 ## User Stories
 
 1. As a small restoration business I would like to track my projects financially to make informed decisions on the path forward as I go.
