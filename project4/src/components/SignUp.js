@@ -21,7 +21,7 @@ class SignUp extends Component {
         return (
             <div className="SignUp">
                 <h1>Sign Up Page</h1>
-                <form onSubmit={(e) => this.props.handleSignup(e, this.state)}>
+                <form onSubmit={(e) => this.props.handleSignUp(e, this.state)}>
                     <input
                         type="text"
                         name="name"

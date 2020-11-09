@@ -1,7 +1,28 @@
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow:1;
 }
 
 .homePic {
   width: 400px;
+}
+
+header {
+  background-color: orange;
+  padding: 15px;
+}
+footer {
+  background-color: orange;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
 }

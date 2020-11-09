@@ -8,7 +8,7 @@ const Home = (props) => {
                 <p>Hompage</p>
                 <img className="homePic" src="https://images.unsplash.com/photo-1579618215542-2ed5e10b65ed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"></img>
                 <div>
-                    <form className="logInBox">
+                <form onSubmit={(e) => this.props.handleLogin(e, this.state)} className="logInBox" >
                         <h3>Log in</h3>
                         <input type = "text" placeholder = "Username" 
                         // onChange = {this.onChange}
@@ -16,7 +16,7 @@ const Home = (props) => {
                         <input type = "text" placeholder = "Password" 
                         // onChange = {this.onChange}
                         />
-                        <input type = "submit"  value = "Sign in"
+                        <input type="submit"  value = "Sign in"
                         // onChange = {this.onChange}
                         />
                     </form>
