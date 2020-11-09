@@ -7,7 +7,6 @@
 
 This project manager app was developed to help me manage my hobbies outside of work. I enjoy everything from wood working to restoring old cars and truck. This app will help me keep track of my project budgets, timelines, and log information that may otherwise get lost without the app.
 
-
  
 ## Project Links
 Below are links to navigate to my project repository and deployed website link. 

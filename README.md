@@ -32,7 +32,7 @@ Below is a wireframe for the Apps pages
 5. As a busy hobbyist, My projects often aren't worked on for weeks and I would use the app to track progess and plan ahead on project so that when I can work on them I am highly efficient. 
 6. As a user I need the ability to track multiple projects at once to stay organized.
 7. As a homeowner I need the ability to track my remodel expenses so I don't invest more in my house than its actually worth.
-8. As someone who resotres antique cars I would like a way to know how many hours and how much money I've spent on a vehicle so I can ask a fair price when I am ready to sell.
+8. As someone who restores antique cars I would like a way to know how many hours and how much money I've spent on a vehicle so I can ask a fair price when I am ready to sell.
 9. As a user I would like to input my project's information and see it saved for later reference.
 10. As a user I would like easy navigation on the sights pages to save time and reduce the headache of tracking down the information I need.
 	
