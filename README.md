@@ -5,7 +5,7 @@
 
 ## Project Description
 
-This project manager app was developed to help me manage my hobbies outside of work. I enjoy everything from wood working to restoring old cars and truck. This app will help me keep track of my project budgets, timelines, and log information that may otherwise get lost without the app.
+This project manager app was developed to help manage hobbies outside of work. Everything from wood working to restoring old cars and trucks. This app will help the user keep track of project budgets, timelines, and log information that may otherwise get lost without the app.
 
 
  
@@ -36,6 +36,12 @@ Below is a wireframe for the Apps pages
 9. As a user I would like to input my project's information and see it saved for later reference.
 10. As a user I would like easy navigation on the sights pages to save time and reduce the headache of tracking down the information I need.
 	
+## Technologies Used
+
+This project utilized:
+- React
+- Express.js
+- CSS
 
 ## MVP for Poject 4
 - A front-end React application that updates the UI
@@ -45,17 +51,18 @@ Below is a wireframe for the Apps pages
 - Have a header with website title and signup/login features.
 - Construct a nav bar for easy site navigation 
 - Use react-router and react-router-dom to navigate to different link/pages. 
-- Allow uses to add projects and information to their projects. 
+- Allow users to add projects and information to their projects. 
 - incorporate orgainization and display information clearly for optimal user        experience. 
 
 
-#### PostMVP for Brewery App
+#### PostMVP for App
+- Allow projects to be shared publicly for others to view
 - professional styling.
-- Search feature to search for specific project. 
-- Incorporate a search feature for similar projects. 
+- Search feature for specific projects.  
 - secure pages to allow only signed in user to view their information. 
 
-
+## Installation instructions
+First fork and clone the repository from the github link provided above, then install the following:
 
 ## Code Snippet
 Use this section to include a brief code snippet of functionality that we are proud of an a brief description. 
@@ -65,3 +72,10 @@ Use this section to include a brief code snippet of functionality that we are pr
 Code Snippet
 
 ```
+
+## Installation instructions
+First fork and clone the repository from the github link provided above, then install the following:
+
+## Contribution Guidlines
+- GitHub Repo = [Project-4 repo](https://github.com/cyoder1/Project-4)
+- GitHub Issue Tracker = [Project-4 issues](https://github.com/cyoder1/Project-4/issues)
