@@ -18,7 +18,7 @@ Below are links to navigate to my project repository and deployed website link.
 ## Wireframes
 Below is a wireframe for the Apps pages
 
-![Home screen](https://imgur.com/a/nAgIZpY)
+![Home screen](/planning/homescreen.png)
 
 ## User Stories
 
