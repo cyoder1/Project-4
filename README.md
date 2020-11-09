@@ -19,6 +19,9 @@ Below are links to navigate to my project repository and deployed website link.
 Below is a wireframe for the Apps pages
 
 ![Home screen](/planning/homescreen.png)
+![signup screen](/planning/signup.png)
+![user project screen](/planning/userProjectPage.png)
+![public project screen](/planning/publicProjectPage.png)
 
 ## User Stories
 
