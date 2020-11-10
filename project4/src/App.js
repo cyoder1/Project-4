@@ -11,7 +11,78 @@ class App extends Component {
     super();
 
     this.state = {
-
+      userProjects:[
+        {
+          projectId: 0,
+          name: "Cabinet",
+          class: "Woodworking",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
+          user_project_id: 3
+        },
+        {
+          projectId: 0,
+          name: "Cabinet2",
+          class: "Woodworking",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
+          user_project_id: 3
+        }
+      ],
+      projectUpdate:[
+        {
+        updateId: 1,
+        description: "Cut wood to size",
+        date: "10/12/2020",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgf2y-goxUxXhTtyXMqPuWLg5HczMm07LxAQ&usqp=CAU",
+        project_update_id: 4
+        }
+      ],
+      projectCost: [
+        {
+        costId: 7,
+        description: "purchased materials",
+        amount: 30.00,
+        project_cost_id: 11
+        }
+      ],
+      loggedInUser: {
+        name: "Random User",
+        username: "username",
+        password: "password",
+        userProjects:[
+          {
+            projectId: 0,
+            name: "Cabinet",
+            class: "Woodworking",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
+            user_project_id: 3
+          },
+          {
+            projectId: 0,
+            name: "Cabinet3",
+            class: "Woodworking",
+            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
+            user_project_id: 3
+          }
+        ],
+        projectUpdate:[
+          {
+          updateId: 1,
+          description: "Cut wood to size",
+          date: "10/12/2020",
+          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgf2y-goxUxXhTtyXMqPuWLg5HczMm07LxAQ&usqp=CAU",
+          project_update_id: 4
+          }
+        ],
+        projectCost: [
+          {
+          costId: 7,
+          description: "purchased materials",
+          amount: 30.00,
+          project_cost_id: 11
+          }
+        ],
+      },
+      selected: ""
     }
   }
 
@@ -36,6 +107,11 @@ class App extends Component {
     this.props.history.push('/profile')
   }
 
+  handleProjectSelection = (e) => {
+    e.preventDefault()
+    console.log("Selected!!!")
+  }
+
   render() {
     return (
       <div className="App">
@@ -51,15 +127,15 @@ class App extends Component {
           <Route path="/signup" 
             render={ (props) => {
               return <SignUp 
-                      handleSignUp={this.handleSignUp} 
-                      {...this.state} />
+                handleSignUp={this.handleSignUp} 
+                {...this.state} />
             }}
           />
           <Route path="/profile" 
                  render={ (props) => {
                    return <Profile 
-                            
-                            {...this.state} />
+                    handleProjectSelection={this.handleProjectSelection}       
+                    {...this.state} />
                  }}
           />
         </main>

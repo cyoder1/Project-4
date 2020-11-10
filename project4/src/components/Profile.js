@@ -16,6 +16,7 @@ class Profile extends Component {
                     {...this.props} 
                     {...this.state} 
                     handleRemove={this.props.handleRemove} 
+                    handleProjectSelection={this.props.handleProjectSelection} 
                 /> 
             </div>
         )

@@ -16,6 +16,7 @@ main {
 header {
   background-color: orange;
   padding: 15px;
+  text-align: left;
 }
 footer {
   background-color: orange;
@@ -25,4 +26,19 @@ footer {
   justify-content: space-between;
   align-items: center;
   padding: 0px 15px;
+  color: black
+}
+.AppTitle {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+.projectListItem {
+  border: 1px solid black;
+  margin: 10px;
 }
