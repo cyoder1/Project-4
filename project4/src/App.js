@@ -46,45 +46,45 @@ class App extends Component {
         project_cost_id: 11
         }
       ],
-      loggedInUser: {
-        name: "Random User",
-        email: "random@email.com",
-        username: "username",
-        password: "password",
-        userProjects:[
-          {
-            projectId: 0,
-            name: "Cabinet",
-            class: "Woodworking",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
-            user_project_id: 3
-          },
-          {
-            projectId: 0,
-            name: "Cabinet3",
-            class: "Woodworking",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
-            user_project_id: 3
-          }
-        ],
-        projectUpdate:[
-          {
-          updateId: 1,
-          description: "Cut wood to size",
-          date: "10/12/2020",
-          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgf2y-goxUxXhTtyXMqPuWLg5HczMm07LxAQ&usqp=CAU",
-          project_update_id: 4
-          }
-        ],
-        projectCost: [
-          {
-          costId: 7,
-          description: "purchased materials",
-          amount: 30.00,
-          project_cost_id: 11
-          }
-        ],
-      },
+      loggedInUser: null,
+        // name: "Random User",
+        // email: "random@email.com",
+        // username: "username",
+        // password: "password",
+        // userProjects:[
+        //   {
+        //     projectId: 0,
+        //     name: "Cabinet",
+        //     class: "Woodworking",
+        //     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
+        //     user_project_id: 3
+        //   },
+        //   {
+        //     projectId: 0,
+        //     name: "Cabinet3",
+        //     class: "Woodworking",
+        //     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
+        //     user_project_id: 3
+        //   }
+        // ],
+        // projectUpdate:[
+        //   {
+        //   updateId: 1,
+        //   description: "Cut wood to size",
+        //   date: "10/12/2020",
+        //   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgf2y-goxUxXhTtyXMqPuWLg5HczMm07LxAQ&usqp=CAU",
+        //   project_update_id: 4
+        //   }
+        // ],
+        // projectCost: [
+        //   {
+        //   costId: 7,
+        //   description: "purchased materials",
+        //   amount: 30.00,
+        //   project_cost_id: 11
+        //   }
+        // ],
+      // },
       selected: null
     }
   }
@@ -118,10 +118,16 @@ class App extends Component {
     console.log(this.state.loggedInUser.userProjects[selected-1].name)
   }
 
+  handleLogout = () => {
+    localStorage.removeItem('authToken');
+    this.setState({ loggedInUser: null})
+    this.props.history.push('/');
+  }
+
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header loggedInUser={this.state.loggedInUser} handleLogout={this.handleLogout}/>
         <main>
           <Route exact path="/"
             render={(props) => 

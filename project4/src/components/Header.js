@@ -7,9 +7,10 @@ function Header(props) {
         <div>
             <header>
                 <Link className="AppTitle" to="/">Project Manager</Link>
+                
                 <nav className="logout">
-                        {props.loggedIn && <button className="logoutButton" onClick={(e) => props.handleLogout(e) }>Logout</button>}
-                    </nav> 
+                    {props.loggedInUser && <button className="logoutButton" onClick={(e) => props.handleLogout(e) }>Logout</button>}
+                </nav> 
                 
             </header> 
 

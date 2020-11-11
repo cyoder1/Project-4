@@ -4,6 +4,11 @@ import {Link} from 'react-router-dom';
 class Home extends Component {
     constructor(props){
         super(props)
+
+        this.state=({
+            username:"",
+            password:""
+        })
     }
 
     onChange = (e) => {
@@ -21,11 +26,19 @@ class Home extends Component {
                         <div>
                             <form onSubmit={(e) => this.props.handleLogin(e, this.state)} className="logInBox" >
                                 <h3>Log in</h3>
-                                <input type = "text" placeholder = "Username" 
-                                onChange = {this.onChange}
+                                <input 
+                                    type = "text" 
+                                    name="username" 
+                                    value={this.state.username}
+                                    placeholder = "Username" 
+                                    onChange = {this.onChange}
                                 />
-                                <input type = "text" placeholder = "Password" 
-                                onChange = {this.onChange}
+                                <input 
+                                    type = "password" 
+                                    name="password"
+                                    value={this.state.password}
+                                    placeholder = "Password" 
+                                    onChange = {this.onChange}
                                 />
                                 <input type="submit"  value = "Sign in"
                                 onChange = {this.onChange}
