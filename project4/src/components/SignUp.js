@@ -6,6 +6,7 @@ class SignUp extends Component {
 
         this.state = {
             name: "",
+            email:"",
             username: "",
             password: ""
         }
@@ -27,6 +28,13 @@ class SignUp extends Component {
                         name="name"
                         placeholder="Enter your name"
                         value={this.state.name}
+                        onChange={this.updateForm}
+                    />
+                    <input
+                        type="text"
+                        name="email"
+                        placeholder="Email"
+                        value={this.state.email}
                         onChange={this.updateForm}
                     />
                     <input

@@ -6,6 +6,8 @@ import Home from './components/Home';
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 
+import {registerUser, loginUser, verifyUser, allCities} from './services/api_helper';
+
 class App extends Component {
   constructor() {
     super();
@@ -46,6 +48,7 @@ class App extends Component {
       ],
       loggedInUser: {
         name: "Random User",
+        email: "random@email.com",
         username: "username",
         password: "password",
         userProjects:[
@@ -98,12 +101,10 @@ class App extends Component {
     this.props.history.push('/profile')
   }
 
-  handleSignUp = (e, userInfo) => {
+  handleSignUp = async (e, registerData) => {
     e.preventDefault();
-    //need to push userinfo to database
-    this.setState({
-
-    })
+    const loggedInUser = await registerUser(registerData);
+    this.setState({loggedInUser});
     this.props.history.push('/profile')
   }
 
