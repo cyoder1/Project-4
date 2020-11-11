@@ -82,7 +82,7 @@ class App extends Component {
           }
         ],
       },
-      selected: ""
+      selected: null
     }
   }
 
@@ -107,9 +107,16 @@ class App extends Component {
     this.props.history.push('/profile')
   }
 
-  handleProjectSelection = (e) => {
+  handleProjectSelection = (e, pick) => {
     e.preventDefault()
+    console.log(pick)
     console.log("Selected!!!")
+    let selected = this.state.selected
+    selected= pick
+    this.setState({
+      selected
+    })
+    console.log(this.state.loggedInUser.userProjects[selected-1].name)
   }
 
   render() {
