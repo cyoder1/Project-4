@@ -89,15 +89,13 @@ class App extends Component {
     }
   }
 
-  handleLogin = (e, userInfo) => {
+  handleLogin = async (e, loginData) => {
     e.preventDefault();
     console.log('in')
     //need to get user data, compare to existing entries and 
     //IF a match is found - log in ELSE display error message
-
-    this.setState({
-
-    })
+    const loggedInUser = await loginUser(loginData);
+    this.setState({ loggedInUser });
     this.props.history.push('/profile')
   }
 
