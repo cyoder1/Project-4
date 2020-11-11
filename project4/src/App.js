@@ -6,7 +6,7 @@ import Home from './components/Home';
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 
-import {registerUser, loginUser, verifyUser, allCities} from './services/api_helper';
+import {registerUser, loginUser, verifyUser, allProjects} from './services/api_helper';
 
 class App extends Component {
   constructor() {
@@ -85,7 +85,8 @@ class App extends Component {
         //   }
         // ],
       // },
-      selected: null
+      selected: null,
+      projects: {},
     }
   }
 
@@ -95,7 +96,9 @@ class App extends Component {
     //need to get user data, compare to existing entries and 
     //IF a match is found - log in ELSE display error message
     const loggedInUser = await loginUser(loginData);
+    console.log(loggedInUser)
     this.setState({ loggedInUser });
+    console.log(loggedInUser.id)
     this.props.history.push('/profile')
   }
 
@@ -124,6 +127,12 @@ class App extends Component {
     this.props.history.push('/');
   }
 
+  getProjects = async (id) => {
+    console.log(id)
+    const projects = await allProjects(id);
+    console.log(projects)
+  }
+
   render() {
     return (
       <div className="App">
@@ -146,7 +155,8 @@ class App extends Component {
           <Route path="/profile" 
                  render={ (props) => {
                    return <Profile 
-                    handleProjectSelection={this.handleProjectSelection}       
+                    handleProjectSelection={this.handleProjectSelection}   
+                    getProjects = {this.getProjects}    
                     {...this.state} />
                  }}
           />

@@ -18,7 +18,9 @@ const ProfileProjectsContainer = (props) => {
             })} */}
             {props.selected && <div className='selectedProject'>
                     <p>{props.loggedInUser.userProjects[props.selected-1].name}</p>
-                </div>}                
+                </div>}   
+            <button onClick={() => props.getProjects( props.loggedInUser.id)}>List of Projects</button> 
+            {/* <div>{props.projects}</div>             */}
         </div>
     )
 }

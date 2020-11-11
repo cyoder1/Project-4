@@ -23,6 +23,13 @@ export const loginUser = async (loginData) => {
     return resp.data.user;
 }
 
+//===============Projects=====================
+export const allProjects = async(id) => {
+        const resp = await api.get(`/project/${id}`);
+        console.log(resp)
+        return resp;
+    }
+
 // export const verifyUser = async () => {
 //     const token = localStorage.getItem('authToken');
 
