@@ -47,6 +47,7 @@ class App extends Component {
         }
       ],
       loggedInUser: null,
+      userProjects: null,
         // name: "Random User",
         // email: "random@email.com",
         // username: "username",
@@ -100,6 +101,8 @@ class App extends Component {
     this.setState({ loggedInUser });
     console.log(loggedInUser.id)
     this.props.history.push('/profile')
+    // this.getProjects(this.state.loggedInUser.id)
+    // console.log(this.state.userProjects)
   }
 
   handleSignUp = async (e, registerData) => {
@@ -129,9 +132,11 @@ class App extends Component {
 
   getProjects = async (id) => {
     console.log(id)
-    const projects = await allProjects(id);
-    console.log(projects)
+    const userProjects = await allProjects(id);
+    console.log(userProjects)
+    this.setState({userProjects: userProjects.data})
   }
+
 
   render() {
     return (

@@ -12,7 +12,7 @@ class ProfileProjects extends Component {
         return(
             <div>
                 <form onClick={(e) => this.props.handleProjectSelection(e, this.props.projectId+1)} className='projectListItem'>
-                    <h2>{this.props.project.name}</h2>
+                    <h2>{this.props.project.project_name}</h2>
                     <p>{this.props.project.class}</p>
                     <button onClick={()=> this.props.handleRemove(this.props.projectId, true)}>Remove</button>
                 </form>
