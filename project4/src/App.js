@@ -137,6 +137,18 @@ class App extends Component {
     this.setState({userProjects: userProjects.data})
   }
 
+  //on refresh logs user back in 
+  handleVerify = async () => {
+    const loggedInUser = await verifyUser();
+    if (loggedInUser) {
+      this.setState({ loggedInUser });
+      this.props.history.push('/profile');
+    }
+  }
+
+  componentDidMount() {
+    this.handleVerify();
+  }
 
   render() {
     return (
@@ -162,6 +174,7 @@ class App extends Component {
                    return <Profile 
                     handleProjectSelection={this.handleProjectSelection}   
                     getProjects = {this.getProjects}    
+                    handleVerify = {this.handleVerify}
                     {...this.state} />
                  }}
           />

@@ -30,16 +30,17 @@ export const allProjects = async(id) => {
         return resp;
     }
 
-// export const verifyUser = async () => {
-//     const token = localStorage.getItem('authToken');
+export const verifyUser = async () => {
+    const token = localStorage.getItem('authToken');
 
-//     if (token) {
-//         api.defaults.headers.common.authorization = `Bearer ${token}`;
-//         const resp = await api.get('/auth/verify');
-//         return resp.data
-//     }
-//     return false;
-// }
+    if (token) {
+        api.defaults.headers.common.authorization = `Bearer ${token}`;
+        const resp = await api.get('/auth/verify');
+        console.log(resp)
+        return resp.data
+    }
+    return false;
+}
 
 // //===================CITIES========================
 // //goes to http://localhost:3001/city/all

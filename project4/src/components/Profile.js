@@ -9,6 +9,10 @@ class Profile extends Component {
         }
     }
 
+    componentDidMount() {
+        this.props.handleVerify();
+      }
+
     render(){
         return(
             <div className="profileProjects">
@@ -17,6 +21,7 @@ class Profile extends Component {
                     {...this.state} 
                     handleRemove={this.props.handleRemove} 
                     handleProjectSelection={this.props.handleProjectSelection} 
+                    handleVerify = {this.props.handleVerify}
                     getProjects = {this.props.getProjects}
                 /> 
             </div>
