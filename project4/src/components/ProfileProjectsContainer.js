@@ -1,6 +1,8 @@
 import React, {Component} from'react';
 import ProfileProjects from './ProfileProjects';
 import { indexPosts, postProject, putPost, destroyPost } from '../services/api_helper';
+import {withRouter} from "react-router-dom";
+
 
 class ProfileProjectsContainer extends Component {
     constructor(props){
@@ -20,16 +22,18 @@ class ProfileProjectsContainer extends Component {
         const newProject = await postProject(projectData, id);
         console.log(newProject);
         const projects = this.state.projects;
-        const newProjects = [...projects, newProject];
+        const newProjects = {...projects, newProject};
         this.setState({
             projects: newProjects
         })
+        await this.props.getProjects(this.props.loggedInUser.id);
         this.props.history.push('/profile')
     }
 
     componentDidMount = async () => {
         await this.props.handleVerify();
         await this.props.getProjects(this.props.loggedInUser.id);
+        
       }
 
     updateForm = (e) => {
@@ -40,6 +44,7 @@ class ProfileProjectsContainer extends Component {
 
     render(){
         // console.log(this.props.loggedInUser.id)
+        // console.log(this.props.userProjects)
         return(
             <div>
                 {this.props.loggedInUser && 
@@ -100,4 +105,4 @@ class ProfileProjectsContainer extends Component {
         )
     }
 }
-export default ProfileProjectsContainer;
+export default withRouter(ProfileProjectsContainer);
