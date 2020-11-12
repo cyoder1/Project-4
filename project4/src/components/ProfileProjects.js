@@ -11,9 +11,10 @@ class ProfileProjects extends Component {
     render() {
         return(
             <div>
-                <form onClick={(e) => this.props.handleProjectSelection(e, this.props.projectId+1)} className='projectListItem'>
+                <form onClick={(e) => this.props.handleProjectSelection(e, this.props.projectId + 1)} className='projectListItem'>
                     <h2>{this.props.project.project_name}</h2>
                     <p>{this.props.project.class}</p>
+                    <p>{this.props.projectId}</p>
                     <button onClick={()=> this.props.handleRemove(this.props.projectId, true)}>Remove</button>
                 </form>
                 {/* {this.props.selected && <div className='selectedProject'>

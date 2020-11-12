@@ -57,10 +57,10 @@ export const verifyUser = async () => {
 // }
 
 // //localhost:3001/post/:cityid
-// export const postPost = async (postData) => {
-//     const resp = await api.post('/post/1', postData);
-//     return resp.data;
-// }
+export const postProject = async (projectData, id) => {
+    const resp = await api.post(`/project/${id}`, projectData);
+    return resp.data;
+}
 
 // //=================PUT=====================
 // export const putPost = async (postId, postData) => {

@@ -121,7 +121,7 @@ class App extends Component {
     this.setState({
       selected
     })
-    console.log(this.state.loggedInUser.userProjects[selected-1].name)
+    console.log(this.state.userProjects[selected-1].project_name)
   }
 
   handleLogout = () => {
