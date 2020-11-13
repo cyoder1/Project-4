@@ -24,7 +24,11 @@ class ProfileProjectsContainer extends Component {
         const projects = this.state.projects;
         const newProjects = {...projects, newProject};
         this.setState({
-            projects: newProjects
+            projects: newProjects,
+            project_name: "",
+            class:"",
+            description: "",
+            img: ""
         })
         await this.props.getProjects(this.props.loggedInUser.id);
         this.props.history.push('/profile')
