@@ -48,12 +48,20 @@ class ProfileProjectsContainer extends Component {
         const updatedProject = await putProject(this.state.id, projectData);
         const projects = this.props.userProjects;
         const newProjects = projects.map(project => project.id === parseInt(id) ? updatedProject : project);
+        const newPage = true
         this.setState({
-            projects: newProjects
+            projects: newProjects,
+            newPage,
+            id: "",
+            project_name: "",
+            class:"",
+            description: "",
+            img: ""
         })
         this.props.history.push('/profile');
         await this.props.getProjects(this.props.loggedInUser.id);
         console.log(this.props.userProjects)
+        console.log(newPage)
     }
 
     renderEdit =(e, id) => {
@@ -150,7 +158,7 @@ class ProfileProjectsContainer extends Component {
                 {!this.state.newPage === true &&
                     <div>
                         <h2>Update your project</h2>
-                        <form onSubmit={(e) => this.updateProject(e, this.state, this.props.userProjects[this.state.id].id)}>
+                        <form onSubmit={(e) => this.updateProject(e, this.state, this.props.userProjects.id)}>
                         <input
                             type="text"
                             name="project_name"
