@@ -72,9 +72,9 @@ export const putProject = async (projectId, projectData) => {
     return resp.data;
 }
 // //===================delete===================
-// export const destroyPost = async (id) => {
-//     await api.delete(`/post/${id}`);
-// }
+export const destroyProject = async (id, projectData) => {
+    await api.delete(`/project/${id}/${projectData.id}`, projectData);
+}
 // /* 
 //     /auth/signup
 //     /auth/login

@@ -1,6 +1,6 @@
 import React, {Component} from'react';
 import ProfileProjects from './ProfileProjects';
-import { indexPosts, postProject, putProject, destroyPost } from '../services/api_helper';
+import { indexPosts, postProject, putProject, destroyProject } from '../services/api_helper';
 import {withRouter} from "react-router-dom";
 
 
@@ -13,7 +13,7 @@ class ProfileProjectsContainer extends Component {
             class:"",
             description: "",
             img: "",
-            newPage: true
+            newPage: true,
         }
     }
 
@@ -42,10 +42,10 @@ class ProfileProjectsContainer extends Component {
 
     updateProject = async (e, projectData, id) => {
         e.preventDefault();
-        console.log(projectData)
+        console.log(id)
         console.log(this.state.id)
         console.log(this.props.userProjects)
-        const updatedProject = await putProject(this.state.id, projectData);
+        const updatedProject = await putProject(id, projectData);
         const projects = this.props.userProjects;
         const newProjects = projects.map(project => project.id === parseInt(id) ? updatedProject : project);
         const newPage = true
@@ -83,6 +83,22 @@ class ProfileProjectsContainer extends Component {
         })
     }
 
+    removeProject = async (id) => {
+        console.log(id)
+        console.log(this.props.loggedInUser)
+        console.log(this.props.userProjects[id].id)
+        await destroyProject(this.props.userProjects[id].id, this.props.loggedInUser);
+        const projects = this.props.userProjects;
+        // const filterProjects = projects.filter(project => project.id !== parseInt(id));
+        // console.log(projects[id])
+        this.setState({
+            // projects: filterProjects
+            selected: null
+        })
+        await this.props.getProjects(this.props.loggedInUser.id);
+        this.props.history.push('/profile');
+    }
+
     componentDidMount = async () => {
         await this.props.handleVerify();
         await this.props.getProjects(this.props.loggedInUser.id);
@@ -97,14 +113,14 @@ class ProfileProjectsContainer extends Component {
 
     render(){
         // console.log(this.props.loggedInUser.id)
-        // console.log(this.props.userProjects)
+        console.log(this.props.selected)
         return(
             <div>
                 {this.props.loggedInUser && 
                 <h1>My Projects {this.props.loggedInUser.name} </h1>}
                 {this.props.userProjects && this.props.userProjects.map((project, id) => {
                     return (<ProfileProjects
-                        handleRemove = {this.props.handleRemove} 
+                        removeProject = {this.removeProject} 
                         handleProjectSelection={this.props.handleProjectSelection} 
                         renderEdit={this.renderEdit}
                         selected = {this.props.selected}
@@ -113,12 +129,12 @@ class ProfileProjectsContainer extends Component {
                         key={id} 
                         projectId = {id} />)
                 })}
-                {this.props.selected && <div className='selectedProject'>
-                        <p>{this.props.userProjects[this.props.selected-1].project_name}</p>
-                        <p>{this.props.userProjects[this.props.selected-1].class}</p>
-                        <p>{this.props.userProjects[this.props.selected-1].description}</p>
-                        <img src={this.props.userProjects[this.props.selected-1].img} />
-                    </div>} 
+                {/* {this.props.click && <div className='selectedProject'>
+                        <p>{this.props.userProjects[this.props.selected].project_name}</p>
+                        <p>{this.props.userProjects[this.props.selected].class}</p>
+                        <p>{this.props.userProjects[this.props.selected].description}</p>
+                        <img src={this.props.userProjects[this.props.selected].img} />
+                    </div>}  */}
                 {this.state.newPage === true &&
                     <div>
                         <h2>Add a new project</h2>
@@ -137,8 +153,8 @@ class ProfileProjectsContainer extends Component {
                             value={this.state.class}
                             onChange={this.updateForm}
                         />
-                        <input
-                            type="text"
+                        <textarea
+                            type="textbox"
                             name="description"
                             placeholder="Project description"
                             value={this.state.description}
@@ -158,7 +174,7 @@ class ProfileProjectsContainer extends Component {
                 {!this.state.newPage === true &&
                     <div>
                         <h2>Update your project</h2>
-                        <form onSubmit={(e) => this.updateProject(e, this.state, this.props.userProjects.id)}>
+                        <form onSubmit={(e) => this.updateProject(e, this.state, this.props.userProjects[this.props.selected].id)}>
                         <input
                             type="text"
                             name="project_name"
@@ -173,7 +189,7 @@ class ProfileProjectsContainer extends Component {
                             value={this.state.class}
                             onChange={this.updateForm}
                         />
-                        <input
+                        <textarea
                             type="text"
                             name="description"
                             placeholder="Project description"

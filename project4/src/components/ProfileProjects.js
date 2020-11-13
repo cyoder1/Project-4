@@ -15,7 +15,7 @@ class ProfileProjects extends Component {
                     <h2>{this.props.project.project_name}</h2>
                     <p>{this.props.project.class}</p>
                     <p>{this.props.projectId+1}</p>
-                    <button onClick={()=> this.props.handleRemove(this.props.projectId, true)}>Remove</button>
+                    <button onClick={()=> this.props.removeProject(this.props.projectId )}>Remove</button>
                     <button onClick={(e)=> this.props.renderEdit(e,this.props.projectId)}>Update</button>
                 </form> 
                 {/* {this.props.selected && <div className='selectedProject'>

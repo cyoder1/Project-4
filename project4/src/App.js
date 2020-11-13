@@ -88,6 +88,8 @@ class App extends Component {
       // },
       selected: null,
       projects: {},
+      theNum: null,
+      click: false
     }
   }
 
@@ -114,14 +116,16 @@ class App extends Component {
 
   handleProjectSelection = (e, pick) => {
     e.preventDefault()
-    // console.log(pick)
+    console.log(pick - 1)
+    console.log(this.state.userProjects)
     // console.log("Selected!!!")
-    let selected = this.state.selected
-    selected= pick
+    let selected = pick-1
     this.setState({
-      selected
+      selected,
+      click:true
     })
-    // console.log(this.state.userProjects[selected-1].project_name)
+    console.log(selected)
+    console.log(this.state.userProjects[selected])
   }
 
   handleLogout = () => {
