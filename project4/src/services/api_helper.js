@@ -8,8 +8,9 @@ const api = axios.create({
 //==================AUTH====================
 //goes to http://localhost:3001/auth/signup
 export const registerUser = async (registerData) => {
+    console.log(registerData)
     const resp = await api.post('/auth/signup', registerData);
-    console.log(resp)
+    // console.log(resp)
     localStorage.setItem('authToken', resp.data.token);
     api.defaults.headers.common.authorization = `Bearer ${resp.data.token}`;
     return resp.data.user;
@@ -18,7 +19,7 @@ export const registerUser = async (registerData) => {
 // goes to http://localhost:3001/auth/login
 export const loginUser = async (loginData) => {
     const resp = await api.post('/auth/login', loginData);
-    console.log(resp)
+    // console.log(resp)
     localStorage.setItem('authToken', resp.data.token);
     api.defaults.headers.common.authorization = `Bearer ${resp.data.token}`;
     return resp.data.user;
@@ -27,7 +28,7 @@ export const loginUser = async (loginData) => {
 //===============Projects=====================
 export const allProjects = async(id) => {
         const resp = await api.get(`/project/${id}`);
-        console.log(resp)
+        // console.log(resp)
         return resp;
     }
 
@@ -37,7 +38,7 @@ export const verifyUser = async () => {
     if (token) {
         api.defaults.headers.common.authorization = `Bearer ${token}`;
         const resp = await api.get('/auth/verify');
-        console.log(resp)
+        // console.log(resp)
         return resp.data
     }
     return false;
@@ -60,14 +61,16 @@ export const verifyUser = async () => {
 // //localhost:3001/post/:cityid
 export const postProject = async (projectData, id) => {
     const resp = await api.post(`/project/${id}`, projectData);
+    console.log(resp)
     return resp.data;
 }
 
 // //=================PUT=====================
-// export const putPost = async (postId, postData) => {
-//     const resp = await api.put(`/post/${postId}`, postData);
-//     return resp.data;
-// }
+export const putProject = async (projectId, projectData) => {
+    console.log(projectId)
+    const resp = await api.put(`/project/${projectId}`, projectData);
+    return resp.data;
+}
 // //===================delete===================
 // export const destroyPost = async (id) => {
 //     await api.delete(`/post/${id}`);

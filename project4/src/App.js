@@ -14,37 +14,37 @@ class App extends Component {
 
     this.state = {
       userProjects:[
-        {
-          projectId: 0,
-          name: "Cabinet",
-          class: "Woodworking",
-          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
-          user_project_id: 3
-        },
-        {
-          projectId: 0,
-          name: "Cabinet2",
-          class: "Woodworking",
-          img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
-          user_project_id: 3
-        }
-      ],
-      projectUpdate:[
-        {
-        updateId: 1,
-        description: "Cut wood to size",
-        date: "10/12/2020",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgf2y-goxUxXhTtyXMqPuWLg5HczMm07LxAQ&usqp=CAU",
-        project_update_id: 4
-        }
-      ],
-      projectCost: [
-        {
-        costId: 7,
-        description: "purchased materials",
-        amount: 30.00,
-        project_cost_id: 11
-        }
+      //   {
+      //     projectId: 0,
+      //     name: "Cabinet",
+      //     class: "Woodworking",
+      //     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
+      //     user_project_id: 3
+      //   },
+      //   {
+      //     projectId: 0,
+      //     name: "Cabinet2",
+      //     class: "Woodworking",
+      //     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
+      //     user_project_id: 3
+      //   }
+      // ],
+      // projectUpdate:[
+      //   {
+      //   updateId: 1,
+      //   description: "Cut wood to size",
+      //   date: "10/12/2020",
+      //   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgf2y-goxUxXhTtyXMqPuWLg5HczMm07LxAQ&usqp=CAU",
+      //   project_update_id: 4
+      //   }
+      // ],
+      // projectCost: [
+      //   {
+      //   costId: 7,
+      //   description: "purchased materials",
+      //   amount: 30.00,
+      //   project_cost_id: 11
+      //   }
       ],
       loggedInUser: null,
       userProjects: null,
@@ -93,13 +93,13 @@ class App extends Component {
 
   handleLogin = async (e, loginData) => {
     e.preventDefault();
-    console.log('in')
+    //console.log('in')
     //need to get user data, compare to existing entries and 
     //IF a match is found - log in ELSE display error message
     const loggedInUser = await loginUser(loginData);
-    console.log(loggedInUser)
+    //console.log(loggedInUser)
     this.setState({ loggedInUser });
-    console.log(loggedInUser.id)
+    //console.log(loggedInUser.id)
     this.props.history.push('/profile')
     // this.getProjects(this.state.loggedInUser.id)
     // console.log(this.state.userProjects)
@@ -114,14 +114,14 @@ class App extends Component {
 
   handleProjectSelection = (e, pick) => {
     e.preventDefault()
-    console.log(pick)
-    console.log("Selected!!!")
+    // console.log(pick)
+    // console.log("Selected!!!")
     let selected = this.state.selected
     selected= pick
     this.setState({
       selected
     })
-    console.log(this.state.userProjects[selected-1].project_name)
+    // console.log(this.state.userProjects[selected-1].project_name)
   }
 
   handleLogout = () => {
@@ -131,9 +131,10 @@ class App extends Component {
   }
 
   getProjects = async (id) => {
-    console.log(id)
+    // console.log(id)
     const userProjects = await allProjects(id);
-    console.log(userProjects)
+    // console.log(userProjects)
+    
     this.setState({userProjects: userProjects.data})
   }
 
@@ -145,7 +146,7 @@ class App extends Component {
       this.props.history.push('/profile');
     }
   }
-
+  
   componentDidMount() {
     this.handleVerify();
   }
