@@ -86,10 +86,10 @@ class App extends Component {
         //   }
         // ],
       // },
-      selected: null,
+      // selected: null,
       projects: {},
       theNum: null,
-      click: false
+      // click: false
     }
   }
 
@@ -114,19 +114,21 @@ class App extends Component {
     this.props.history.push('/profile')
   }
 
-  handleProjectSelection = (e, pick) => {
-    e.preventDefault()
-    console.log(pick - 1)
-    console.log(this.state.userProjects)
-    // console.log("Selected!!!")
-    let selected = pick-1
-    this.setState({
-      selected,
-      click:true
-    })
-    console.log(selected)
-    console.log(this.state.userProjects[selected])
-  }
+  // handleProjectSelection = (e, pick) => {
+  //   e.preventDefault()
+  //     e.preventDefault()
+  //     console.log(pick - 1)
+  //     console.log(this.state.userProjects)
+  //     // console.log("Selected!!!")
+  //     let selected = pick-1
+  //     this.setState({
+  //       selected,
+  //       click:true
+  //     })
+  //     console.log(selected)
+  //     console.log(this.state.userProjects[selected])
+  //     // this.setState({click: false})
+  // }
 
   handleLogout = () => {
     localStorage.removeItem('authToken');
@@ -177,7 +179,7 @@ class App extends Component {
           <Route path="/profile" 
                  render={ (props) => {
                    return <Profile 
-                    handleProjectSelection={this.handleProjectSelection}   
+                    // handleProjectSelection={this.handleProjectSelection}   
                     getProjects = {this.getProjects}    
                     handleVerify = {this.handleVerify}
                     {...this.state} />

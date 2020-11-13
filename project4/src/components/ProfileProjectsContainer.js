@@ -43,8 +43,9 @@ class ProfileProjectsContainer extends Component {
     updateProject = async (e, projectData, id) => {
         e.preventDefault();
         console.log(id)
-        console.log(this.state.id)
+        console.log(this.state)
         console.log(this.props.userProjects)
+        console.log(this.props.userProjects[this.state.selected])
         const updatedProject = await putProject(id, projectData);
         const projects = this.props.userProjects;
         const newProjects = projects.map(project => project.id === parseInt(id) ? updatedProject : project);
@@ -66,12 +67,12 @@ class ProfileProjectsContainer extends Component {
 
     renderEdit =(e, id) => {
         e.preventDefault()
-        console.log(this.props.userProjects[id])
+        console.log(this.props.userProjects[id].id)
         const project_name = (this.props.userProjects[id].project_name)
         const description = this.props.userProjects[id].description
         const class1 = this.props.userProjects[id].class
         const img = this.props.userProjects[id].img
-        const id1 = id+1
+        const id1 = this.props.userProjects[id].id
         const newPage = false
         this.setState({
             project_name,
@@ -79,11 +80,14 @@ class ProfileProjectsContainer extends Component {
             class: class1,
             img,
             newPage,
-            id: id1
+            id: id1,
+            selected: null,
+            click: true,
         })
     }
 
-    removeProject = async (id) => {
+    removeProject = async (e, id) => {
+        e.preventDefault()
         console.log(id)
         console.log(this.props.loggedInUser)
         console.log(this.props.userProjects[id].id)
@@ -92,12 +96,28 @@ class ProfileProjectsContainer extends Component {
         // const filterProjects = projects.filter(project => project.id !== parseInt(id));
         // console.log(projects[id])
         this.setState({
-            // projects: filterProjects
-            selected: null
+            // projects: filterProjects,
+            click: false
         })
         await this.props.getProjects(this.props.loggedInUser.id);
         this.props.history.push('/profile');
     }
+
+    handleProjectSelection = (e, pick) => {
+        e.preventDefault()
+          e.preventDefault()
+          console.log(pick - 1)
+          console.log(this.props.userProjects)
+          // console.log("Selected!!!")
+          let selected = pick-1
+          this.setState({
+            selected,
+            click:true
+          })
+          console.log(selected)
+          console.log(this.props.userProjects[selected])
+          // this.setState({click: false})
+      }
 
     componentDidMount = async () => {
         await this.props.handleVerify();
@@ -113,7 +133,7 @@ class ProfileProjectsContainer extends Component {
 
     render(){
         // console.log(this.props.loggedInUser.id)
-        console.log(this.props.selected)
+        console.log(this.state)
         return(
             <div>
                 {this.props.loggedInUser && 
@@ -121,20 +141,20 @@ class ProfileProjectsContainer extends Component {
                 {this.props.userProjects && this.props.userProjects.map((project, id) => {
                     return (<ProfileProjects
                         removeProject = {this.removeProject} 
-                        handleProjectSelection={this.props.handleProjectSelection} 
+                        handleProjectSelection={this.handleProjectSelection} 
                         renderEdit={this.renderEdit}
-                        selected = {this.props.selected}
+                        selected = {this.state.selected}
                         userProjects = {this.props.userProjects}
                         project={project} 
                         key={id} 
                         projectId = {id} />)
                 })}
-                {/* {this.props.click && <div className='selectedProject'>
-                        <p>{this.props.userProjects[this.props.selected].project_name}</p>
-                        <p>{this.props.userProjects[this.props.selected].class}</p>
-                        <p>{this.props.userProjects[this.props.selected].description}</p>
-                        <img src={this.props.userProjects[this.props.selected].img} />
-                    </div>}  */}
+                {this.state.click && <div className='selectedProject'>
+                        <p>{this.props.userProjects[this.state.selected].project_name}</p>
+                        <p>{this.props.userProjects[this.state.selected].class}</p>
+                        <p>{this.props.userProjects[this.state.selected].description}</p>
+                        <img src={this.props.userProjects[this.state.selected].img} />
+                    </div>} 
                 {this.state.newPage === true &&
                     <div>
                         <h2>Add a new project</h2>
@@ -174,7 +194,7 @@ class ProfileProjectsContainer extends Component {
                 {!this.state.newPage === true &&
                     <div>
                         <h2>Update your project</h2>
-                        <form onSubmit={(e) => this.updateProject(e, this.state, this.props.userProjects[this.props.selected].id)}>
+                        <form onSubmit={(e) => this.updateProject(e, this.state, this.props.userProjects[this.state.selected].id)}>
                         <input
                             type="text"
                             name="project_name"
