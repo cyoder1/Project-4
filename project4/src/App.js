@@ -6,90 +6,18 @@ import Home from './components/Home';
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 
-import {registerUser, loginUser, verifyUser, allProjects} from './services/api_helper';
+import {registerUser, loginUser, verifyUser, allProjects, allCosts} from './services/api_helper';
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      userProjects:[
-      //   {
-      //     projectId: 0,
-      //     name: "Cabinet",
-      //     class: "Woodworking",
-      //     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
-      //     user_project_id: 3
-      //   },
-      //   {
-      //     projectId: 0,
-      //     name: "Cabinet2",
-      //     class: "Woodworking",
-      //     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
-      //     user_project_id: 3
-      //   }
-      // ],
-      // projectUpdate:[
-      //   {
-      //   updateId: 1,
-      //   description: "Cut wood to size",
-      //   date: "10/12/2020",
-      //   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgf2y-goxUxXhTtyXMqPuWLg5HczMm07LxAQ&usqp=CAU",
-      //   project_update_id: 4
-      //   }
-      // ],
-      // projectCost: [
-      //   {
-      //   costId: 7,
-      //   description: "purchased materials",
-      //   amount: 30.00,
-      //   project_cost_id: 11
-      //   }
-      ],
       loggedInUser: null,
       userProjects: null,
-        // name: "Random User",
-        // email: "random@email.com",
-        // username: "username",
-        // password: "password",
-        // userProjects:[
-        //   {
-        //     projectId: 0,
-        //     name: "Cabinet",
-        //     class: "Woodworking",
-        //     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
-        //     user_project_id: 3
-        //   },
-        //   {
-        //     projectId: 0,
-        //     name: "Cabinet3",
-        //     class: "Woodworking",
-        //     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQCvAa_bhgHkfNJY1Rkrs4RrAnBcofeWGm1hteVXUd3_1fNbP_epwrjcHdh1w&usqp=CAc",
-        //     user_project_id: 3
-        //   }
-        // ],
-        // projectUpdate:[
-        //   {
-        //   updateId: 1,
-        //   description: "Cut wood to size",
-        //   date: "10/12/2020",
-        //   img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgf2y-goxUxXhTtyXMqPuWLg5HczMm07LxAQ&usqp=CAU",
-        //   project_update_id: 4
-        //   }
-        // ],
-        // projectCost: [
-        //   {
-        //   costId: 7,
-        //   description: "purchased materials",
-        //   amount: 30.00,
-        //   project_cost_id: 11
-        //   }
-        // ],
-      // },
-      // selected: null,
+      userCosts: null,
       projects: {},
       theNum: null,
-      // click: false
     }
   }
 
@@ -153,6 +81,15 @@ class App extends Component {
     }
   }
   
+  getCosts = async (id) => {
+    // console.log(id)
+    const userCosts = await allCosts(id);
+    
+    
+    this.setState({userCosts: userCosts.data})
+    console.log(userCosts)
+  }
+
   componentDidMount() {
     this.handleVerify();
   }
@@ -182,6 +119,7 @@ class App extends Component {
                     // handleProjectSelection={this.handleProjectSelection}   
                     getProjects = {this.getProjects}    
                     handleVerify = {this.handleVerify}
+                    getCosts = {this.getCosts}
                     {...this.state} />
                  }}
           />

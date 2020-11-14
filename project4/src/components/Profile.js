@@ -23,6 +23,7 @@ class Profile extends Component {
                     handleProjectSelection={this.props.handleProjectSelection} 
                     handleVerify = {this.props.handleVerify}
                     getProjects = {this.props.getProjects}
+                    getCosts = {this.props.getCosts}
                 /> 
             </div>
         )

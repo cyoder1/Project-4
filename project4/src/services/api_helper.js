@@ -80,3 +80,13 @@ export const destroyProject = async (id, projectData) => {
 //     /auth/login
 //     /auth
 // */
+
+
+
+//===============COSTS=====================
+export const allCosts = async(id) => {
+    const resp = await api.get(`/cost/${id}`);
+    // const resp = await api.get(`/cost/1`);
+    console.log(resp)
+    return resp;
+}

@@ -106,7 +106,7 @@ class ProfileProjectsContainer extends Component {
     handleProjectSelection = (e, pick) => {
         e.preventDefault()
           e.preventDefault()
-          console.log(pick - 1)
+        //   console.log(pick - 1)
           console.log(this.props.userProjects)
           // console.log("Selected!!!")
           let selected = pick-1
@@ -133,7 +133,7 @@ class ProfileProjectsContainer extends Component {
 
     render(){
         // console.log(this.props.loggedInUser.id)
-        console.log(this.state)
+        // console.log(this.state)
         return(
             <div>
                 {this.props.loggedInUser && 
@@ -154,6 +154,7 @@ class ProfileProjectsContainer extends Component {
                         <p>{this.props.userProjects[this.state.selected].class}</p>
                         <p>{this.props.userProjects[this.state.selected].description}</p>
                         <img src={this.props.userProjects[this.state.selected].img} />
+
                     </div>} 
                 {this.state.newPage === true &&
                     <div>
@@ -227,7 +228,7 @@ class ProfileProjectsContainer extends Component {
                     </form>
                     </div>  
                 }
-                {/* <button onClick={() => this.props.getProjects( this.props.loggedInUser.id)}>List of Projects</button>  */}
+                <button onClick={() => this.props.getCosts( this.props.userProjects[this.state.selected].id)}>List of Costs</button> 
                 {/* <div>{this.props.projects}</div>             */}
             </div>
         )
