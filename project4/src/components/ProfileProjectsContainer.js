@@ -1,5 +1,6 @@
 import React, {Component} from'react';
 import ProfileProjects from './ProfileProjects';
+import ProfileCosts from './ProfileCosts';
 import { indexPosts, postProject, putProject, destroyProject } from '../services/api_helper';
 import {withRouter} from "react-router-dom";
 
@@ -154,7 +155,18 @@ class ProfileProjectsContainer extends Component {
                         <p>{this.props.userProjects[this.state.selected].class}</p>
                         <p>{this.props.userProjects[this.state.selected].description}</p>
                         <img src={this.props.userProjects[this.state.selected].img} />
-
+                    {this.props.userCosts && this.props.userCosts.map((cost, id) => {
+                            return (<ProfileCosts
+                                // removeCost = {this.removeCost} 
+                                // handleProjectSelection={this.handleProjectSelection} 
+                                // renderEdit={this.renderEdit}
+                                selected = {this.state.selected}
+                                userProjects = {this.props.userProjects}
+                                userCosts = {this.props.userCosts}
+                                cost={cost} 
+                                key={id} 
+                                costId = {id} />)
+                        })}
                     </div>} 
                 {this.state.newPage === true &&
                     <div>
