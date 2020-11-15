@@ -9,7 +9,7 @@ const ProfileCosts =(props) => {
                     <h2>{props.cost.cost_desc}</h2>
                     <p>${props.cost.amount}</p>
                     <p>{props.cost.date}</p>
-                    {/* <button onClick={(e)=> this.props.removeProject(e,this.props.projectId )}>Remove</button> */}
+                    <button onClick={(e)=> props.removeCost(e,props.costId )}>Remove</button>
                     <button onClick={(e)=> props.renderEditCost(e,props.costId)}>Update</button>
                 {/* </form>  */}
                 {/* {this.props.selected && <div className='selectedProject'>

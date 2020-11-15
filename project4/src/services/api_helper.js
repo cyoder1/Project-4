@@ -102,3 +102,7 @@ export const putCost = async (costId, costData) => {
     const resp = await api.put(`/cost/${costId}`, costData);
     return resp.data;
 }
+
+export const destroyCost = async (id, costData) => {
+    await api.delete(`/cost/${id}/${costData.id}`, costData);
+}

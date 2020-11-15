@@ -41,7 +41,6 @@ class ProfileProjectsContainer extends Component {
             class:"",
             description: "",
             img: "",
-            selected: 0,
             cost_desc: "",
             date: "",
             amount: null
@@ -193,6 +192,24 @@ class ProfileProjectsContainer extends Component {
         // console.log(newPage)
     }
 
+    removeCost = async (e, id) => {
+        e.preventDefault()
+        console.log(this.props.userCosts[id].id)
+        console.log(this.props.userProjects[this.state.selected].id)
+        console.log(id)
+        console.log(this.props.loggedInUser)
+        await destroyCost(this.props.userCosts[id].id, this.props.userProjects[this.state.selected]);
+        const projects = this.props.userProjects;
+        // const filterProjects = projects.filter(project => project.id !== parseInt(id));
+        // console.log(projects[id])
+        this.setState({
+            // projects: filterProjects,
+            click: false
+        })
+        // await this.props.getProjects(this.props.loggedInUser.id);
+        await this.props.getCosts( this.props.userProjects[this.state.selected].id)
+        this.props.history.push('/profile');
+    }
 
     componentDidMount = async () => {
         await this.props.handleVerify();
@@ -311,6 +328,7 @@ class ProfileProjectsContainer extends Component {
                                     // removeCost = {this.removeCost} 
                                     // handleProjectSelection={this.handleProjectSelection} 
                                     renderEditCost={this.renderEditCost}
+                                    removeCost = {this.removeCost}
                                     selected = {this.state.selected}
                                     userProjects = {this.props.userProjects}
                                     userCosts = {this.props.userCosts}
