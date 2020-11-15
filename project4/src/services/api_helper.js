@@ -90,3 +90,15 @@ export const allCosts = async(id) => {
     console.log(resp)
     return resp;
 }
+
+export const postCost = async (costData, id) => {
+    const resp = await api.post(`/cost/${id}`, costData);
+    console.log(resp)
+    return resp.data;
+}
+
+export const putCost = async (costId, costData) => {
+    console.log(costId)
+    const resp = await api.put(`/cost/${costId}`, costData);
+    return resp.data;
+}
