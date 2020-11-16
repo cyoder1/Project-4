@@ -211,6 +211,10 @@ class ProfileProjectsContainer extends Component {
         this.props.history.push('/profile');
     }
 
+    runTotal = () => {
+        
+    }
+
     componentDidMount = async () => {
         await this.props.handleVerify();
         await this.props.getProjects(this.props.loggedInUser.id);
@@ -397,7 +401,10 @@ class ProfileProjectsContainer extends Component {
                                 </form>
                             </div>}
                     </div>} 
-                
+                {/* <p>?{this.props.userCosts} :  
+                    
+                </p> */}
+                <button onClick={() => this.runTotal()}>Total</button>
                 {/* <button onClick={() => this.props.getCosts( this.props.userProjects[this.state.selected].id)}>List of Costs</button>  */}
                 {/* <div>{this.props.projects}</div>             */}
             </div>

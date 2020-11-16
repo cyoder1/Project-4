@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Home from './Home';
+import {Button} from 'evergreen-ui'
+
 
 function Header(props) {
     return (
@@ -9,7 +11,7 @@ function Header(props) {
                 <Link className="AppTitle" to="/">Project Manager</Link>
                 
                 <nav className="logout">
-                    {props.loggedInUser && <button className="logoutButton" onClick={(e) => props.handleLogout(e) }>Logout</button>}
+                    {props.loggedInUser && <Button appearance="primary" className="logoutButton" onClick={(e) => props.handleLogout(e) }>Logout</Button>}
                 </nav> 
                 
             </header> 
