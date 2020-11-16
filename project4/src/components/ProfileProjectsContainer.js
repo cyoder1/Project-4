@@ -20,7 +20,8 @@ class ProfileProjectsContainer extends Component {
             amount: null,
             selected: null,
             newLineItem: true,
-            selectedCost: null
+            selectedCost: null,
+            totalCost: null
         }
     }
 
@@ -211,8 +212,18 @@ class ProfileProjectsContainer extends Component {
         this.props.history.push('/profile');
     }
 
-    runTotal = () => {
-        
+    runTotal = async () => {
+        const items = this.props.userCosts;
+        let tot = 0
+        for (let i=0 ; i < items.length ; i++){
+            console.log(items[i].amount)
+            tot = tot + parseFloat(items[i].amount)
+        }
+        console.log(tot)
+        this.setState({
+            totalCost: tot
+        }, () => {console.log(this.state.totalCost)})
+        console.log(this.state)
     }
 
     componentDidMount = async () => {
@@ -405,6 +416,7 @@ class ProfileProjectsContainer extends Component {
                     
                 </p> */}
                 <button onClick={() => this.runTotal()}>Total</button>
+                {this.state.totalCost && <p>${this.state.totalCost}</p>}
                 {/* <button onClick={() => this.props.getCosts( this.props.userProjects[this.state.selected].id)}>List of Costs</button>  */}
                 {/* <div>{this.props.projects}</div>             */}
             </div>
