@@ -126,7 +126,7 @@ class App extends Component {
         </main>
         <footer>
           <p>Camden Yoder</p>
-          <p>&copy; Project Manager App</p>
+          <p>&copy; Hay Down App</p>
           <a href="https://github.com/cyoder1/Project-4/issues">Report an Issue</a>
         </footer>
       </div>
