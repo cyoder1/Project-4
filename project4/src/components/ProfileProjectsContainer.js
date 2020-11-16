@@ -3,7 +3,7 @@ import ProfileProjects from './ProfileProjects';
 import ProfileCosts from './ProfileCosts';
 import { indexPosts, postProject, putProject, destroyProject ,postCost, putCost, destroyCost } from '../services/api_helper';
 import {withRouter} from "react-router-dom";
-
+import emailjs from'emailjs-com';
 
 class ProfileProjectsContainer extends Component {
     constructor(props){
@@ -118,19 +118,26 @@ class ProfileProjectsContainer extends Component {
 
     handleProjectSelection = async (e, pick) => {
         e.preventDefault()
-          e.preventDefault()
         //   console.log(pick - 1)
           console.log(this.props.userProjects)
           // console.log("Selected!!!")
-          let selected = pick-1
+        //   let selected = pick-1
+          if (this.state.selected === pick-1) {
+            const click = !this.state.click
           this.setState({
-            selected,
-            click:true
+            // selected,
+            click
           })
-          console.log(selected)
-          console.log(this.props.userProjects[selected])
-          await this.props.getCosts( this.props.userProjects[selected].id)
-          // this.setState({click: false})
+        } else {
+            let selected = pick-1
+            this.setState({
+                selected,
+                click: true
+            })
+        }
+          console.log(this.state.selected)
+          console.log(this.props.userProjects[this.state.selected])
+          await this.props.getCosts( this.props.userProjects[pick-1].id)
       }
     //===================COST FUNCTIONS =======================================================================================================================
     createCost = async (e, costData, id) => {
@@ -141,9 +148,11 @@ class ProfileProjectsContainer extends Component {
     //     console.log(newCost);
     //     const costs = this.state.costs;
     //     const newCosts = [...costs, newCost];
-    //     this.setState({
-    //         costs: newCosts
-    //     })
+        this.setState({
+            cost_desc: "",
+            date: "",
+            amount: 0,
+        })
     //     this.props.history.push('/posts')
         await this.props.getCosts(this.props.userProjects[this.state.selected].id);
             this.props.history.push('/profile')
@@ -205,10 +214,11 @@ class ProfileProjectsContainer extends Component {
         // console.log(projects[id])
         this.setState({
             // projects: filterProjects,
-            click: false
+            // click: false
         })
         // await this.props.getProjects(this.props.loggedInUser.id);
         await this.props.getCosts( this.props.userProjects[this.state.selected].id)
+        console.log(this.props.userCosts)
         this.props.history.push('/profile');
     }
 
@@ -219,12 +229,26 @@ class ProfileProjectsContainer extends Component {
             console.log(items[i].amount)
             tot = tot + parseFloat(items[i].amount)
         }
+        tot = tot.toFixed(2)
         console.log(tot)
         this.setState({
             totalCost: tot
         }, () => {console.log(this.state.totalCost)})
         console.log(this.state)
     }
+
+    //===============================Email============================================================
+
+    sendEmail = (e) => {
+        e.preventDefault();
+        emailjs.sendForm('service_hrvmep6', 'template_5ugw2uq', e.target, 'user_o0kaVRJrd4Jtl7pnhXUGz')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+        });
+        e.target.reset()
+  }
 
     componentDidMount = async () => {
         await this.props.handleVerify();
@@ -339,7 +363,7 @@ class ProfileProjectsContainer extends Component {
                             return (
                             <div>
                                 {/* <h1>Project Expenses</h1> */}
-                                    <ProfileCosts
+                                    <ProfileCosts key={id}
                                     // removeCost = {this.removeCost} 
                                     // handleProjectSelection={this.handleProjectSelection} 
                                     renderEditCost={this.renderEditCost}
@@ -419,6 +443,38 @@ class ProfileProjectsContainer extends Component {
                 {this.state.totalCost && <p>${this.state.totalCost}</p>}
                 {/* <button onClick={() => this.props.getCosts( this.props.userProjects[this.state.selected].id)}>List of Costs</button>  */}
                 {/* <div>{this.props.projects}</div>             */}
+                <h2>Stuck on a project? Please provide your information below!</h2>
+                    <form onSubmit={(e) => this.sendEmail(e)}>
+                        <input
+                            type="text"
+                            name="emailName"
+                            placeholder="Enter your name"
+                            value={this.state.emailName}
+                            onChange={this.updateForm}
+                        />
+                        <input
+                            type="text"
+                            name="emailNumber"
+                            placeholder="phone number"
+                            value={this.state.emailNumber}
+                            onChange={this.updateForm}
+                        />
+                        <input
+                            type="text"
+                            name="emailEmail"
+                            placeholder="email"
+                            value={this.state.emailEmail}
+                            onChange={this.updateForm}
+                        />
+                        <textarea
+                            type="text"
+                            name="emailInfo"
+                            placeholder="your questions or comments"
+                            value={this.state.emailInfo}
+                            onChange={this.updateForm}
+                        />
+                        <input type="submit" value="Send" />
+                    </form>
             </div>
         )
     }
