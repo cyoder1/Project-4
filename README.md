@@ -1,27 +1,15 @@
 # Project-4
 
-## Project Manager 
-![Alt Text](Link to deployed app)
+## Hay Down App 
+![App Link](https://thoughtful-regret.surge.sh/)
 
 ## Project Description
 
-This project manager app was developed to help manage hobbies outside of work. Everything from wood working to restoring old cars and trucks. This app will help the user keep track of project budgets, timelines, and log information that may otherwise get lost without the app.
+This project manager app was developed to help manage hobbies and work. Everything from wood working to restoring old cars and trucks. This app will help the user keep track of project budgets, timelines, and log information that may otherwise get lost without the app.
 
+## Brief Example
 
- 
-## Project Links
-Below are links to navigate to my project repository and deployed website link. 
-- GitHub Repo = [Project-4 repo](https://github.com/cyoder1/Project-4)
-- Deployment = [Deployed Project Manager App](insert link here) 
-
-
-## Wireframes
-Below is a wireframe for the Apps pages
-
-![Home screen](/planning/homescreen.png)
-![signup screen](/planning/signup.png)
-![user project screen](/planning/userProjectPage.png)
-![public project screen](/planning/publicProjectPage.png)
+![App in browser](/planning/briefExample.png)
 
 ## User Stories
 
@@ -35,47 +23,43 @@ Below is a wireframe for the Apps pages
 8. As someone who restores antique cars I would like a way to know how many hours and how much money I've spent on a vehicle so I can ask a fair price when I am ready to sell.
 9. As a user I would like to input my project's information and see it saved for later reference.
 10. As a user I would like easy navigation on the sights pages to save time and reduce the headache of tracking down the information I need.
-	
+
 ## Technologies Used
 
 This project utilized:
 - React
 - Express.js
+- Node.js
 - CSS
+- Evergreen UI
+- emailjs
 
-## MVP for Poject 4
-- A front-end React application that updates the UI
-- Include a backend to store user input information. 
-- Create a GitHub Repo.
-- Establish a gitwork flow to cleanly develop the app and make modification simple.  
-- Have a header with website title and signup/login features.
-- Construct a nav bar for easy site navigation 
-- Use react-router and react-router-dom to navigate to different link/pages. 
-- Allow users to add projects and information to their projects. 
-- incorporate orgainization and display information clearly for optimal user        experience. 
-
-
-#### PostMVP for App
-- Allow projects to be shared publicly for others to view
-- professional styling.
-- Search feature for specific projects.  
-- secure pages to allow only signed in user to view their information. 
-
-## Installation instructions
+## Installation Instructions
 First fork and clone the repository from the github link provided above, then install the following:
 
-## Code Snippet
-Use this section to include a brief code snippet of functionality that we are proud of an a brief description. 
- 
+On your front end, run the following commands:
+npm install axios react react-router-dom react -router --save evergreen-ui emailjs-com
 
-```
-Code Snippet
+On your backend, run the following commands:
+npm install express method-override sequelize ejs pg bcrypt bcryptjs cookie-parser cors dotenv jsonwebtoken sequelize-cli
 
-```
-
-## Installation instructions
-First fork and clone the repository from the github link provided above, then install the following:
+sequelize db:migrate and sequelize db:seed:all the data to align with my server
 
 ## Contribution Guidlines
-- GitHub Repo = [Project-4 repo](https://github.com/cyoder1/Project-4)
+
+Users can contribute to the code, identify issues, and propose improvements through the links below by creating an issue. Ambitious users can fork and clone the repository and make a pull request to the repository to submit change proposals that I will review and implement as necessary.
+
+- GitHub Front-end Repo = [Project-4 repo](https://github.com/cyoder1/Project-4)
+- GitHub Back-end Repo = [Project-4 repo](https://github.com/cyoder1/project-4-backend)
 - GitHub Issue Tracker = [Project-4 issues](https://github.com/cyoder1/Project-4/issues)
+
+## Wireframes
+Below is a wireframe for the Apps pages
+
+![Home screen](/planning/homescreen.png)
+![signup screen](/planning/signup.png)
+![user project screen](/planning/userProjectPage.png)
+![public project screen](/planning/publicProjectPage.png)
+
+## Unsolved problems/ major hurdles
+The main issue on this project was having time to complete all that I would have liked to. In the future I would like to expand the website to have another model containing user updates and milestones for their projects rather than having all updates on a large text area. This would help secure information and prevent a user from modifying information they may not want to at the time.

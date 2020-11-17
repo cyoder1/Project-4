@@ -36,7 +36,7 @@ Below is a wireframe for the Apps pages
 10. As a user I would like easy navigation on the sights pages to save time and reduce the headache of tracking down the information I need.
 	
 
-## MVP for Poject 4
+## MVP for Project 4
 - A front-end React application that updates the UI
 - Include a backend to store user input information. 
 - Create a GitHub Repo.
