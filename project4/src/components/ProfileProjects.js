@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Button, IconButton, TrashIcon, EditIcon} from 'evergreen-ui'
 
 class ProfileProjects extends Component {
     constructor(props){
@@ -19,8 +20,8 @@ class ProfileProjects extends Component {
                         {/* <p>{this.props.projectId}</p> */}
                     </div>
                     <div className="projectSelectionButtons">
-                        <button onClick={(e)=> this.props.removeProject(e,this.props.projectId )}>Remove</button>
-                        <button onClick={(e)=> this.props.renderEdit(e,this.props.projectId)}>Update</button>
+                        <IconButton  icon={TrashIcon} intent="danger" onClick={(e)=> this.props.removeProject(e,this.props.projectId )}>Remove</IconButton>
+                        <IconButton icon={EditIcon} onClick={(e)=> this.props.renderEdit(e,this.props.projectId)}>Update</IconButton>
                     </div>
                 </form> 
                 {/* {this.props.selected && <div className='selectedProject'>

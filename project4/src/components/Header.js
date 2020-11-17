@@ -13,7 +13,7 @@ function Header(props) {
                 <Link className="AppTitle" to="/">Hay Down</Link>
                 </div>
                 <nav className="logout">
-                    {props.loggedInUser && <Button appearance="primary" className="logoutButton" onClick={(e) => props.handleLogout(e) }>Logout</Button>}
+                    {props.loggedInUser && <Button height="24" appearance="primary" className="logoutButton" onClick={(e) => props.handleLogout(e) }>Logout</Button>}
                 </nav> 
                 
             </header> 

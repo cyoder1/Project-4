@@ -80,6 +80,8 @@ a {
 
 .projectSelectionButtons{
   margin: 10px;
+  display: flex;
+  flex-direction: row;
 }
 
 .projectSelectionContent{
@@ -90,8 +92,8 @@ a {
   flex-direction: row;
   justify-content: space-between;
   align-items:center;
-  width: 95%;
   height: 100px;
+
 }
 
 .profileContentRight {
@@ -100,20 +102,42 @@ a {
   width: 55%;
 }
 
-.userProjectsTitle{
-
-}
-
-.mapExpenses{
+/* .mapExpenses{
   margin: 10px;
   border: 2px solid #f9f7cf;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
+} */
+
 .costItem{
+  margin: 10px;
+  border: 2px solid #f9f7cf;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 5px 10px;
 }
+.costButtons{
+  margin: 5px 0px;
+}
+.costDesc {
+  margin: 0px;
+}
+
+.costButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  /* justify-content: left; */
+  text-align: left;
+}
+.row {
+  display:flex;
+  align-items: left;
+}
+
+/* button {
+  background-color: #f2dcbb;
+} */
