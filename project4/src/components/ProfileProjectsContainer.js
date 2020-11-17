@@ -268,7 +268,7 @@ class ProfileProjectsContainer extends Component {
         return(
             <div>
                 {this.props.loggedInUser && 
-                <h1> {this.props.loggedInUser.name}'s Projects </h1>}
+                <h1 className="userProjectsTitle"> {this.props.loggedInUser.name}'s Projects </h1>}
                 <div className="profileContent">
                     <div className="projectSelectionList">
                         {this.props.userProjects && this.props.userProjects.map((project, id) => {
@@ -282,50 +282,49 @@ class ProfileProjectsContainer extends Component {
                                 key={id} 
                                 projectId = {id} />)
                         })}
+                        {this.state.newPage === true &&
+                            <div>
+                                <h2>Add a new project</h2>
+                                    <form onSubmit={(e) => this.createProject(e, this.state, this.props.loggedInUser.id)}>
+                                        <input
+                                            type="text"
+                                            name="project_name"
+                                            placeholder="Enter your project name"
+                                            value={this.state.project_name}
+                                            onChange={this.updateForm}
+                                        />
+                                        <input
+                                            type="text"
+                                            name="class"
+                                            placeholder="project class type (ex, woodworking, automotive, etc."
+                                            value={this.state.class}
+                                            onChange={this.updateForm}
+                                        />
+                                        <textarea
+                                            type="textbox"
+                                            name="description"
+                                            placeholder="Project description"
+                                            value={this.state.description}
+                                            onChange={this.updateForm}
+                                        />
+                                        <input
+                                            type="text"
+                                            name="img"
+                                            placeholder="Image Url"
+                                            value={this.state.img}
+                                            onChange={this.updateForm}
+                                        />
+                                        <input type="submit" value="Add new project" />
+                                </form>
+                            </div>  
+                        }
                     </div>
                     <div className="profileContentRight">
                         {this.state.click && <div className='selectedProject'>
-                                <p>{this.props.userProjects[this.state.selected].project_name}</p>
-                                <p>{this.props.userProjects[this.state.selected].class}</p>
-                                <p>{this.props.userProjects[this.state.selected].description}</p>
+                                <h1>{this.props.userProjects[this.state.selected].project_name}</h1>
+                                <p>Class: {this.props.userProjects[this.state.selected].class}</p>
+                                <p>Description and updates: {this.props.userProjects[this.state.selected].description}</p>
                                 <img src={this.props.userProjects[this.state.selected].img} />
-
-                                    {this.state.newPage === true &&
-                                        <div>
-                                            <h2>Add a new project</h2>
-                                                <form onSubmit={(e) => this.createProject(e, this.state, this.props.loggedInUser.id)}>
-                                                    <input
-                                                        type="text"
-                                                        name="project_name"
-                                                        placeholder="Enter your project name"
-                                                        value={this.state.project_name}
-                                                        onChange={this.updateForm}
-                                                    />
-                                                    <input
-                                                        type="text"
-                                                        name="class"
-                                                        placeholder="project class type (ex, woodworking, automotive, etc."
-                                                        value={this.state.class}
-                                                        onChange={this.updateForm}
-                                                    />
-                                                    <textarea
-                                                        type="textbox"
-                                                        name="description"
-                                                        placeholder="Project description"
-                                                        value={this.state.description}
-                                                        onChange={this.updateForm}
-                                                    />
-                                                    <input
-                                                        type="text"
-                                                        name="img"
-                                                        placeholder="Image Url"
-                                                        value={this.state.img}
-                                                        onChange={this.updateForm}
-                                                    />
-                                                    <input type="submit" value="Add new project" />
-                                            </form>
-                                        </div>  
-                                    }
                                     {!this.state.newPage === true &&
                                         <div>
                                             <h2>Update your project</h2>
@@ -365,7 +364,7 @@ class ProfileProjectsContainer extends Component {
                             <h1>Project Expenses</h1>
                             {this.props.userCosts && this.props.userCosts.map((cost, id) => {
                                     return (
-                                    <div>
+                                    <div className="mapExpenses">
                                         {/* <h1>Project Expenses</h1> */}
                                             <ProfileCosts key={id}
                                             // removeCost = {this.removeCost} 
