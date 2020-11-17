@@ -20,8 +20,8 @@ class ProfileProjects extends Component {
                         {/* <p>{this.props.projectId}</p> */}
                     </div>
                     <div className="projectSelectionButtons">
-                        <IconButton  icon={TrashIcon} intent="danger" onClick={(e)=> this.props.removeProject(e,this.props.projectId )}>Remove</IconButton>
                         <IconButton icon={EditIcon} onClick={(e)=> this.props.renderEdit(e,this.props.projectId)}>Update</IconButton>
+                        <IconButton  icon={TrashIcon} intent="danger" onClick={(e)=> this.props.removeProject(e,this.props.projectId )}>Remove</IconButton>
                     </div>
                 </form> 
                 {/* {this.props.selected && <div className='selectedProject'>

@@ -21,8 +21,8 @@ class Home extends Component {
         return(
             <div>
                 <div>
-                    <p>Hompage</p>
-                    <img className="homePic" src="https://images.unsplash.com/photo-1579618215542-2ed5e10b65ed?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"></img>
+                    <h1>Welcome to Hay Down</h1>
+                    <img className="homePic" src="https://thewoodwhisperer.com/wp-content/uploads/steves-garage-woodshop-2.jpg"></img>
                         <div>
                             <form onSubmit={(e) => this.props.handleLogin(e, this.state)} className="logInBox" >
                                 <h3>Log in</h3>

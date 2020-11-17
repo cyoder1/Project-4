@@ -138,6 +138,7 @@ class ProfileProjectsContainer extends Component {
           console.log(this.state.selected)
           console.log(this.props.userProjects[this.state.selected])
           await this.props.getCosts( this.props.userProjects[pick-1].id)
+          await this.runTotal()
       }
     //===================COST FUNCTIONS =======================================================================================================================
     createCost = async (e, costData, id) => {
@@ -155,6 +156,7 @@ class ProfileProjectsContainer extends Component {
         })
     //     this.props.history.push('/posts')
         await this.props.getCosts(this.props.userProjects[this.state.selected].id);
+        await this.runTotal()
             this.props.history.push('/profile')
     }
 
@@ -218,6 +220,7 @@ class ProfileProjectsContainer extends Component {
         })
         // await this.props.getProjects(this.props.loggedInUser.id);
         await this.props.getCosts( this.props.userProjects[this.state.selected].id)
+        await this.runTotal()
         console.log(this.props.userCosts)
         this.props.history.push('/profile');
     }
@@ -283,39 +286,41 @@ class ProfileProjectsContainer extends Component {
                                 projectId = {id} />)
                         })}
                         {this.state.newPage === true &&
-                            <div>
+                            <div className="add">
                                 <h2>Add a new project</h2>
-                                    <form onSubmit={(e) => this.createProject(e, this.state, this.props.loggedInUser.id)}>
-                                        <input
-                                            type="text"
-                                            name="project_name"
-                                            placeholder="Enter your project name"
-                                            value={this.state.project_name}
-                                            onChange={this.updateForm}
-                                        />
-                                        <input
-                                            type="text"
-                                            name="class"
-                                            placeholder="project class type (ex, woodworking, automotive, etc."
-                                            value={this.state.class}
-                                            onChange={this.updateForm}
-                                        />
-                                        <textarea
-                                            type="textbox"
-                                            name="description"
-                                            placeholder="Project description"
-                                            value={this.state.description}
-                                            onChange={this.updateForm}
-                                        />
-                                        <input
-                                            type="text"
-                                            name="img"
-                                            placeholder="Image Url"
-                                            value={this.state.img}
-                                            onChange={this.updateForm}
-                                        />
-                                        <input type="submit" value="Add new project" />
-                                </form>
+                                    <div className="inputStacks">
+                                        <form onSubmit={(e) => this.createProject(e, this.state, this.props.loggedInUser.id)}>
+                                            <input
+                                                type="text"
+                                                name="project_name"
+                                                placeholder="Enter your project name"
+                                                value={this.state.project_name}
+                                                onChange={this.updateForm}
+                                            /><br></br>
+                                            <input
+                                                type="text"
+                                                name="class"
+                                                placeholder="project class type (ex, woodworking, automotive, etc."
+                                                value={this.state.class}
+                                                onChange={this.updateForm}
+                                            /><br></br>
+                                            <textarea
+                                                type="textbox"
+                                                name="description"
+                                                placeholder="Project description"
+                                                value={this.state.description}
+                                                onChange={this.updateForm}
+                                            /><br></br>
+                                            <input
+                                                type="text"
+                                                name="img"
+                                                placeholder="Image Url"
+                                                value={this.state.img}
+                                                onChange={this.updateForm}
+                                            /><br></br>
+                                            <input type="submit" value="Add new project" />
+                                    </form>
+                                </div>
                             </div>  
                         }
                     </div>
@@ -326,39 +331,41 @@ class ProfileProjectsContainer extends Component {
                                 <p>Description and updates: {this.props.userProjects[this.state.selected].description}</p>
                                 <img src={this.props.userProjects[this.state.selected].img} />
                                     {!this.state.newPage === true &&
-                                        <div>
+                                        <div className="edit1">
                                             <h2>Update your project</h2>
-                                            <form onSubmit={(e) => this.updateProject(e, this.state, this.props.userProjects[this.state.selected].id)}>
-                                                <input
-                                                    type="text"
-                                                    name="project_name"
-                                                    placeholder="Enter your project name"
-                                                    value={this.state.project_name}
-                                                    onChange={this.updateForm}
-                                                />
-                                                <input
-                                                    type="text"
-                                                    name="class"
-                                                    placeholder="project class type (ex, woodworking, automotive, etc."
-                                                    value={this.state.class}
-                                                    onChange={this.updateForm}
-                                                />
-                                                <textarea
-                                                    type="text"
-                                                    name="description"
-                                                    placeholder="Project description"
-                                                    value={this.state.description}
-                                                    onChange={this.updateForm}
-                                                />
-                                                <input
-                                                    type="text"
-                                                    name="img"
-                                                    placeholder="Image Url"
-                                                    value={this.state.img}
-                                                    onChange={this.updateForm}
-                                                />
-                                                <input type="submit" value="Update project" />
-                                            </form>
+                                            <div className="inputStacks">
+                                                <form className = "inputStacks" onSubmit={(e) => this.updateProject(e, this.state, this.props.userProjects[this.state.selected].id)}>
+                                                    <input
+                                                        type="text"
+                                                        name="project_name"
+                                                        placeholder="Enter your project name"
+                                                        value={this.state.project_name}
+                                                        onChange={this.updateForm}
+                                                    />
+                                                    <input
+                                                        type="text"
+                                                        name="class"
+                                                        placeholder="project class type (ex, woodworking, automotive, etc."
+                                                        value={this.state.class}
+                                                        onChange={this.updateForm}
+                                                    />
+                                                    <textarea
+                                                        type="text"
+                                                        name="description"
+                                                        placeholder="Project description"
+                                                        value={this.state.description}
+                                                        onChange={this.updateForm}
+                                                    />
+                                                    <input
+                                                        type="text"
+                                                        name="img"
+                                                        placeholder="Image Url"
+                                                        value={this.state.img}
+                                                        onChange={this.updateForm}
+                                                    />
+                                                    <input type="submit" value="Update project" />
+                                                </form>
+                                            </div>
                                         </div>  
                                     }
                             <h1>Project Expenses</h1>
@@ -379,7 +386,11 @@ class ProfileProjectsContainer extends Component {
                                             costId={id} />
                                     </div>)
                                 })}
-                                    {this.props.userCosts && this.state.newLineItem ===true && <div>
+                                <div className="total">
+                                    {this.state.totalCost && <p>Total project investment: ${this.state.totalCost}</p>}
+                                </div>
+
+                                    {this.props.userCosts && this.state.newLineItem ===true && <div className="add">
                                         <h2>Add new expense</h2>
                                         <form onSubmit={(e) => this.createCost(e, this.state, this.props.userProjects[this.state.selected].id)}>
                                             <input
@@ -409,7 +420,7 @@ class ProfileProjectsContainer extends Component {
                                         </form>
                                     </div>}
 
-                                    {this.props.userCosts && !this.state.newLineItem ===true && <div>
+                                    {this.props.userCosts && !this.state.newLineItem ===true && <div className="edit">
                                         <h2>Edit expense</h2>
                                         <form onSubmit={(e) => this.updateCost(e, this.state, this.props.userCosts[this.state.selectedCost].id)}>
                                             <input
@@ -439,48 +450,43 @@ class ProfileProjectsContainer extends Component {
                                         </form>
                                     </div>}
                             </div>} 
-                        {/* <p>?{this.props.userCosts} :  
-                            
-                        </p> */}
-                        <button onClick={() => this.runTotal()}>Total</button>
-                        {this.state.totalCost && <p>${this.state.totalCost}</p>}
-                        {/* <button onClick={() => this.props.getCosts( this.props.userProjects[this.state.selected].id)}>List of Costs</button>  */}
-                        {/* <div>{this.props.projects}</div>             */}
                     </div>
                     </div>
                     <div className='emailInfo'>
                         <h2>Stuck on a project? Please provide your information below and we'll get back to you with help!</h2>
-                            <form onSubmit={(e) => this.sendEmail(e)}>
-                                <input
-                                    type="text"
-                                    name="emailName"
-                                    placeholder="Enter your name"
-                                    value={this.state.emailName}
-                                    onChange={this.updateForm}
-                                />
-                                <input
-                                    type="text"
-                                    name="emailNumber"
-                                    placeholder="phone number"
-                                    value={this.state.emailNumber}
-                                    onChange={this.updateForm}
-                                />
-                                <input
-                                    type="text"
-                                    name="emailEmail"
-                                    placeholder="email"
-                                    value={this.state.emailEmail}
-                                    onChange={this.updateForm}
-                                />
-                                <textarea
-                                    type="text"
-                                    name="emailInfo"
-                                    placeholder="your questions or comments"
-                                    value={this.state.emailInfo}
-                                    onChange={this.updateForm}
-                                />
-                                <input type="submit" value="Send" />
-                            </form>
+                            <div className="emailInput">
+                                <form onSubmit={(e) => this.sendEmail(e)}>
+                                    <input
+                                        type="text"
+                                        name="emailName"
+                                        placeholder="Enter your name"
+                                        value={this.state.emailName}
+                                        onChange={this.updateForm}
+                                    /><br></br>
+                                    <input
+                                        type="text"
+                                        name="emailNumber"
+                                        placeholder="phone number"
+                                        value={this.state.emailNumber}
+                                        onChange={this.updateForm}
+                                    /><br></br>
+                                    <input
+                                        type="text"
+                                        name="emailEmail"
+                                        placeholder="email"
+                                        value={this.state.emailEmail}
+                                        onChange={this.updateForm}
+                                    /><br></br>
+                                    <textarea
+                                        type="text"
+                                        name="emailInfo"
+                                        placeholder="your questions or comments"
+                                        value={this.state.emailInfo}
+                                        onChange={this.updateForm}
+                                    /><br></br>
+                                    <input type="submit" value="Send" />
+                                </form>
+                            </div>
                         </div>
                     
             </div>

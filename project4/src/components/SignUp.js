@@ -53,6 +53,8 @@ class SignUp extends Component {
                     />
                     <input type="submit" value="Create Profile" />
                 </form>
+
+                <img src="https://www.copart.com/content/us/en/landing-page/green%20classic%20car.png" />
             </div>
         )
     }
