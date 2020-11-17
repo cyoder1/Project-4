@@ -17,16 +17,12 @@ class ProfileProjects extends Component {
                     <div className="projectSelectionContent">
                         <h2>{this.props.project.project_name}</h2>
                         <p>{this.props.project.class}</p>
-                        {/* <p>{this.props.projectId}</p> */}
                     </div>
                     <div className="projectSelectionButtons">
                         <IconButton icon={EditIcon} onClick={(e)=> this.props.renderEdit(e,this.props.projectId)}>Update</IconButton>
                         <IconButton  icon={TrashIcon} intent="danger" onClick={(e)=> this.props.removeProject(e,this.props.projectId )}>Remove</IconButton>
                     </div>
                 </form> 
-                {/* {this.props.selected && <div className='selectedProject'>
-                    <p>Your project info goes here</p>
-                </div>} */}
             </div>
         )
     }

@@ -31,8 +31,6 @@ class App extends Component {
     this.setState({ loggedInUser });
     //console.log(loggedInUser.id)
     this.props.history.push('/profile')
-    // this.getProjects(this.state.loggedInUser.id)
-    // console.log(this.state.userProjects)
   }
 
   handleSignUp = async (e, registerData) => {
@@ -42,22 +40,6 @@ class App extends Component {
     this.props.history.push('/profile')
   }
 
-  // handleProjectSelection = (e, pick) => {
-  //   e.preventDefault()
-  //     e.preventDefault()
-  //     console.log(pick - 1)
-  //     console.log(this.state.userProjects)
-  //     // console.log("Selected!!!")
-  //     let selected = pick-1
-  //     this.setState({
-  //       selected,
-  //       click:true
-  //     })
-  //     console.log(selected)
-  //     console.log(this.state.userProjects[selected])
-  //     // this.setState({click: false})
-  // }
-
   handleLogout = () => {
     localStorage.removeItem('authToken');
     this.setState({ loggedInUser: null})
@@ -65,9 +47,7 @@ class App extends Component {
   }
 
   getProjects = async (id) => {
-    // console.log(id)
     const userProjects = await allProjects(id);
-    // console.log(userProjects)
     
     this.setState({userProjects: userProjects.data})
   }
@@ -82,7 +62,6 @@ class App extends Component {
   }
   
   getCosts = async (id) => {
-    // console.log(id)
     const userCosts = await allCosts(id);
     
     
@@ -116,7 +95,6 @@ class App extends Component {
           <Route path="/profile" 
                  render={ (props) => {
                    return <Profile 
-                    // handleProjectSelection={this.handleProjectSelection}   
                     getProjects = {this.getProjects}    
                     handleVerify = {this.handleVerify}
                     getCosts = {this.getCosts}

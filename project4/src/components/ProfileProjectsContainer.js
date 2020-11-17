@@ -29,14 +29,8 @@ class ProfileProjectsContainer extends Component {
         e.preventDefault()
         // console.log("create project")
         const newProject = await postProject(projectData, id);
-        // console.log(newProject);
-        // const projects = this.props.userProjects;
-        // console.log(projects)
-        // const newProjects = {...projects, newProject};
-        // console.log(newProjects)
         console.log(this.props.userProjects)
         this.setState({
-            // projects: newProjects,
             id: "",
             project_name: "",
             class:"",
@@ -146,9 +140,6 @@ class ProfileProjectsContainer extends Component {
         console.log(id)
         console.log(this.props.userCosts)
         const newCost = await postCost(costData, id);
-    //     console.log(newCost);
-    //     const costs = this.state.costs;
-    //     const newCosts = [...costs, newCost];
         this.setState({
             cost_desc: "",
             date: "",
@@ -175,7 +166,6 @@ class ProfileProjectsContainer extends Component {
             amount,
             newLineItem,
             selectedCost
-            // click: true,
         })
         console.log(this.state)
     }
@@ -212,8 +202,6 @@ class ProfileProjectsContainer extends Component {
         console.log(this.props.loggedInUser)
         await destroyCost(this.props.userCosts[id].id, this.props.userProjects[this.state.selected]);
         const projects = this.props.userProjects;
-        // const filterProjects = projects.filter(project => project.id !== parseInt(id));
-        // console.log(projects[id])
         this.setState({
             // projects: filterProjects,
             // click: false
@@ -266,8 +254,6 @@ class ProfileProjectsContainer extends Component {
     }
 
     render(){
-        // console.log(this.props.loggedInUser.id)
-        // console.log(this.state)
         return(
             <div>
                 {this.props.loggedInUser && 
@@ -329,7 +315,7 @@ class ProfileProjectsContainer extends Component {
                                 <h1>{this.props.userProjects[this.state.selected].project_name}</h1>
                                 <p>Class: {this.props.userProjects[this.state.selected].class}</p>
                                 <p>Description and updates: {this.props.userProjects[this.state.selected].description}</p>
-                                <img src={this.props.userProjects[this.state.selected].img} />
+                                <img className="projImg" src={this.props.userProjects[this.state.selected].img} />
                                     {!this.state.newPage === true &&
                                         <div className="edit1">
                                             <h2>Update your project</h2>
@@ -372,10 +358,7 @@ class ProfileProjectsContainer extends Component {
                             {this.props.userCosts && this.props.userCosts.map((cost, id) => {
                                     return (
                                     <div className="mapExpenses">
-                                        {/* <h1>Project Expenses</h1> */}
                                             <ProfileCosts key={id}
-                                            // removeCost = {this.removeCost} 
-                                            // handleProjectSelection={this.handleProjectSelection} 
                                             renderEditCost={this.renderEditCost}
                                             removeCost = {this.removeCost}
                                             selected = {this.state.selected}
@@ -410,7 +393,6 @@ class ProfileProjectsContainer extends Component {
                                             <input
                                                 type="number"
                                                 step=".01"
-                                                // min="0"
                                                 name="amount"
                                                 placeholder="expense amount"
                                                 value={this.state.amount}
@@ -440,7 +422,6 @@ class ProfileProjectsContainer extends Component {
                                             <input
                                                 type="number"
                                                 step=".01"
-                                                // min="0"
                                                 name="amount"
                                                 placeholder="expense amount"
                                                 value={this.state.amount}

@@ -17,10 +17,6 @@ function Header(props) {
                 </nav> 
                 
             </header> 
-
-            {/* <nav>
-                <Home {...props}/>    
-            </nav>            */}
         </div>
 
     )

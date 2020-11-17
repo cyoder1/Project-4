@@ -87,6 +87,11 @@ a {
 .projectSelectionContent{
   margin: 10px;
 }
+
+.projImg {
+  width: 200px;
+  height: 200px;
+}
 .projectListItem{
   display:flex;
   flex-direction: row;
@@ -101,14 +106,6 @@ a {
   border-radius: 5px;
   width: 55%;
 }
-
-/* .mapExpenses{
-  margin: 10px;
-  border: 2px solid #f9f7cf;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-} */
 
 .costItem{
   margin: 10px;
@@ -130,7 +127,6 @@ a {
   display: flex;
   flex-direction: column;
   align-items: left;
-  /* justify-content: left; */
   text-align: left;
 }
 .row {
@@ -232,3 +228,7 @@ a {
   
 }
 
+.projImg {
+  width: 300px;
+  height: auto;
+}
