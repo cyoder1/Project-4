@@ -10,13 +10,18 @@ class ProfileProjects extends Component {
 
     render() {
         return(
-            <div>
+            <div className="projectSelectOptions">
+                
                 <form onClick={(e) => this.props.handleProjectSelection(e, this.props.projectId + 1)} className='projectListItem'>
-                    <h2>{this.props.project.project_name}</h2>
-                    <p>{this.props.project.class}</p>
-                    <p>{this.props.projectId}</p>
-                    <button onClick={(e)=> this.props.removeProject(e,this.props.projectId )}>Remove</button>
-                    <button onClick={(e)=> this.props.renderEdit(e,this.props.projectId)}>Update</button>
+                    <div className="projectSelectionContent">
+                        <h2>{this.props.project.project_name}</h2>
+                        <p>{this.props.project.class}</p>
+                        {/* <p>{this.props.projectId}</p> */}
+                    </div>
+                    <div className="projectSelectionButtons">
+                        <button onClick={(e)=> this.props.removeProject(e,this.props.projectId )}>Remove</button>
+                        <button onClick={(e)=> this.props.renderEdit(e,this.props.projectId)}>Update</button>
+                    </div>
                 </form> 
                 {/* {this.props.selected && <div className='selectedProject'>
                     <p>Your project info goes here</p>
