@@ -21,10 +21,15 @@ class ProfileProjectsContainer extends Component {
             selected: null,
             newLineItem: true,
             selectedCost: null,
-            totalCost: null
+            totalCost: null,
+            emailName: "",
+            emailNumber:"",
+            emailEmail: "",
+            emailInfo: "",
         }
     }
 
+    //called to create a user project and push it to database
     createProject = async (e, projectData, id) => {
         e.preventDefault()
         // console.log("create project")
@@ -45,14 +50,9 @@ class ProfileProjectsContainer extends Component {
         console.log(this.props.userProjects)
     }
 
+    //allows user to update a current project and save those changes to the database
     updateProject = async (e, projectData, id) => {
         e.preventDefault();
-        console.log(id)
-        console.log(projectData)
-        console.log(this.state.selected)
-        console.log(this.props.userProjects)
-        console.log(this.props.userProjects)
-        console.log(this.props.userProjects[this.state.selected])
         const updatedProject = await putProject(id, projectData);
         const projects = this.props.userProjects;
         const newProjects = projects.map(project => project.id === parseInt(id) ? updatedProject : project);
@@ -72,6 +72,7 @@ class ProfileProjectsContainer extends Component {
         console.log(newPage)
     }
 
+    //function displays the edit form for users to modify their projects
     renderEdit =(e, id) => {
         e.preventDefault()
         console.log(this.props.userProjects[id].id)
@@ -92,28 +93,22 @@ class ProfileProjectsContainer extends Component {
             click: true,
         })
     }
-
+//destroys a users project from the database upon being called
     removeProject = async (e, id) => {
         e.preventDefault()
-        console.log(id)
-        console.log(this.props.loggedInUser)
-        console.log(this.props.userProjects[id].id)
         await destroyProject(this.props.userProjects[id].id, this.props.loggedInUser);
         const projects = this.props.userProjects;
-        // const filterProjects = projects.filter(project => project.id !== parseInt(id));
-        // console.log(projects[id])
         this.setState({
-            // projects: filterProjects,
             click: false
         })
         await this.props.getProjects(this.props.loggedInUser.id);
         this.props.history.push('/profile');
     }
-
+//allows user to select a project and display the information on the page
     handleProjectSelection = async (e, pick) => {
         e.preventDefault()
         //   console.log(pick - 1)
-          console.log(this.props.userProjects)
+        //   console.log(this.props.userProjects)
           // console.log("Selected!!!")
         //   let selected = pick-1
           if (this.state.selected === pick-1) {
@@ -213,6 +208,7 @@ class ProfileProjectsContainer extends Component {
         this.props.history.push('/profile');
     }
 
+    //function used to total all cost items in the user's selected project
     runTotal = async () => {
         const items = this.props.userCosts;
         let tot = 0
@@ -238,7 +234,13 @@ class ProfileProjectsContainer extends Component {
             }, (error) => {
                 console.log(error.text);
         });
-        e.target.reset()
+        // 
+        this.setState({
+            emailName: '',
+            emailNumber:"",
+            emailEmail: "",
+            emailInfo: "",
+        })
   }
 
     componentDidMount = async () => {

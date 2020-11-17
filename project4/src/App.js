@@ -33,6 +33,7 @@ class App extends Component {
     this.props.history.push('/profile')
   }
 
+//function called to sign in user
   handleSignUp = async (e, registerData) => {
     e.preventDefault();
     const loggedInUser = await registerUser(registerData);
@@ -40,12 +41,14 @@ class App extends Component {
     this.props.history.push('/profile')
   }
 
+  //called to log out the user
   handleLogout = () => {
     localStorage.removeItem('authToken');
     this.setState({ loggedInUser: null})
     this.props.history.push('/');
   }
 
+  //retrieves user's list of projects from the backend server
   getProjects = async (id) => {
     const userProjects = await allProjects(id);
     
@@ -60,7 +63,7 @@ class App extends Component {
       this.props.history.push('/profile');
     }
   }
-  
+  //retrieves user's project costs from databse
   getCosts = async (id) => {
     const userCosts = await allCosts(id);
     
